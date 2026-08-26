@@ -34,7 +34,7 @@ def create_app():
     app.config.from_object(Config)
 
     # Enable Cross-Origin Resource Sharing
-    CORS(app, resources={r"/api/*": {"origins": "*"}})
+    CORS(app, resources={r"/*": {"origins": "*"}}, methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"], allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Origin"])
 
     # Ensure upload folder exists
     os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
